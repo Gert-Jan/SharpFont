@@ -24,13 +24,14 @@ SOFTWARE.*/
 
 using System;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal struct GenericRec
+	public struct GenericRec
 	{
-		internal IntPtr data;
-		internal IntPtr finalizer;
+		public IntPtr data;
+		public IntPtr finalizer;
 	}
 }

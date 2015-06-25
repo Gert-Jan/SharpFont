@@ -27,7 +27,7 @@ using System.Runtime.InteropServices;
 
 namespace SharpFont.Internal
 {
-	internal sealed class FaceMarshsaler : ICustomMarshaler
+	public sealed class FaceMarshsaler : ICustomMarshaler
 	{
 		private static readonly FaceMarshsaler Instance = new FaceMarshsaler();
 

@@ -37,38 +37,38 @@ namespace SharpFont.Internal
 	/// Refer to <see cref="GlyphSlot"/> for FreeType documentation.
 	/// </remarks>
 	[StructLayout(LayoutKind.Sequential)]
-	internal class GlyphSlotRec
+	public class GlyphSlotRec
 	{
-		internal IntPtr library;
-		internal IntPtr face;
-		internal IntPtr next;
-		internal uint reserved;
-		internal GenericRec generic;
+		public IntPtr library;
+		public IntPtr face;
+		public IntPtr next;
+		public uint reserved;
+		public GenericRec generic;
 
-		internal GlyphMetricsRec metrics;
-		internal FT_Long linearHoriAdvance;
-		internal FT_Long linearVertAdvance;
-		internal FTVector26Dot6 advance;
+		public GlyphMetricsRec metrics;
+		public FT_Long linearHoriAdvance;
+		public FT_Long linearVertAdvance;
+		public FTVector26Dot6 advance;
 
-		internal GlyphFormat format;
+		public GlyphFormat format;
 
-		internal BitmapRec bitmap;
-		internal int bitmap_left;
-		internal int bitmap_top;
+		public BitmapRec bitmap;
+		public int bitmap_left;
+		public int bitmap_top;
 
-		internal OutlineRec outline;
+		public OutlineRec outline;
 
-		internal uint num_subglyphs;
-		internal IntPtr subglyphs;
+		public uint num_subglyphs;
+		public IntPtr subglyphs;
 
-		internal IntPtr control_data;
-		internal FT_Long control_len;
+		public IntPtr control_data;
+		public FT_Long control_len;
 
-		internal FT_Long lsb_delta;
-		internal FT_Long rsb_delta;
+		public FT_Long lsb_delta;
+		public FT_Long rsb_delta;
 
-		internal IntPtr other;
+		public IntPtr other;
 
-		private IntPtr @internal;
+		private IntPtr @public;
 	}
 }

@@ -31,11 +31,11 @@ using FT_ULong = System.UIntPtr;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal struct ParameterRec
+	public struct ParameterRec
 	{
-		internal FT_ULong tag;
-		internal IntPtr data;
+		public FT_ULong tag;
+		public IntPtr data;
 
-		internal static int SizeInBytes { get { return Marshal.SizeOf(typeof(ParameterRec)); } }
+		public static int SizeInBytes { get { return Marshal.SizeOf(typeof(ParameterRec)); } }
 	}
 }

@@ -31,12 +31,12 @@ using FT_ULong = System.UIntPtr;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Explicit)]
-	internal struct StreamDescRec
+	public struct StreamDescRec
 	{
 		[FieldOffset(0)]
-		internal FT_Long value;
+		public FT_Long value;
 
 		[FieldOffset(0)]
-		internal IntPtr pointer;
+		public IntPtr pointer;
 	}
 }

@@ -749,6 +749,7 @@ namespace SharpFont
 					throw new ObjectDisposedException("Reference", "Cannot access a disposed object.");
 
 				reference = value;
+				//rec = RecReader.ReadUsingReference<FaceRec>(reference);
 				rec = PInvokeHelper.PtrToStructure<FaceRec>(reference);
 			}
 		}

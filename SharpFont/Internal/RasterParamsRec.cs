@@ -28,18 +28,18 @@ using System.Runtime.InteropServices;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal class RasterParamsRec
+	public class RasterParamsRec
 	{
-		internal IntPtr target;
-		internal IntPtr source;
-		internal RasterFlags flags;
-		internal RasterSpanFunc gray_spans;
-		internal RasterSpanFunc black_spans;
-		internal RasterBitTestFunc bit_test;
-		internal RasterBitSetFunc bit_set;
-		internal IntPtr user;
-		internal BBox clip_box;
+		public IntPtr target;
+		public IntPtr source;
+		public RasterFlags flags;
+		public RasterSpanFunc gray_spans;
+		public RasterSpanFunc black_spans;
+		public RasterBitTestFunc bit_test;
+		public RasterBitSetFunc bit_set;
+		public IntPtr user;
+		public BBox clip_box;
 
-		internal static int SizeInBytes { get { return Marshal.SizeOf(typeof(RasterParamsRec)); } }
+		public static int SizeInBytes { get { return Marshal.SizeOf(typeof(RasterParamsRec)); } }
 	}
 }

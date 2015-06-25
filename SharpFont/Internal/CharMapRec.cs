@@ -36,11 +36,11 @@ namespace SharpFont.Internal
 	/// Refer to <see cref="CharMap"/> for FreeType documentation.
 	/// </remarks>
 	[StructLayout(LayoutKind.Sequential)]
-	internal class CharMapRec
+	public class CharMapRec
 	{
-		internal IntPtr face;
-		internal Encoding encoding;
-		internal PlatformId platform_id;
-		internal ushort encoding_id;
+		public IntPtr face;
+		public Encoding encoding;
+		public PlatformId platform_id;
+		public ushort encoding_id;
 	}
 }

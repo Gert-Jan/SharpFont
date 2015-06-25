@@ -28,11 +28,11 @@ using System.Runtime.InteropServices;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal class BitmapGlyphRec
+	public class BitmapGlyphRec
 	{
-		internal GlyphRec root;
-		internal int left;
-		internal int top;
-		internal BitmapRec bitmap;
+		public GlyphRec root;
+		public int left;
+		public int top;
+		public BitmapRec bitmap;
 	}
 }

@@ -27,6 +27,8 @@ using System.Runtime.InteropServices;
 
 using FT_Long = System.IntPtr;
 using FT_ULong = System.UIntPtr;
+using System.IO;
+using System.Reflection;
 
 namespace SharpFont.Internal
 {
@@ -37,54 +39,123 @@ namespace SharpFont.Internal
 	/// Refer to <see cref="Face"/> for FreeType documentation.
 	/// </remarks>
 	[StructLayout(LayoutKind.Sequential)]
-	internal class FaceRec
+	public class FaceRec
 	{
-		internal FT_Long num_faces;
-		internal FT_Long face_index;
+		public FT_Long num_faces;
+		public FT_Long face_index;
 
-		internal FT_Long face_flags;
-		internal FT_Long style_flags;
+		public FT_Long face_flags;
+		public FT_Long style_flags;
 
-		internal FT_Long num_glyphs;
+		public FT_Long num_glyphs;
 
-		internal IntPtr family_name;
-		internal IntPtr style_name;
+		public IntPtr family_name;
+		public IntPtr style_name;
 
-		internal int num_fixed_sizes;
-		internal IntPtr available_sizes;
+		public int num_fixed_sizes;
+		public IntPtr available_sizes;
 
-		internal int num_charmaps;
-		internal IntPtr charmaps;
+		public int num_charmaps;
+		public IntPtr charmaps;
 
-		internal GenericRec generic;
+		public GenericRec generic;
 
-		internal BBox bbox;
+		public BBox bbox;
 
-		internal ushort units_per_EM;
-		internal short ascender;
-		internal short descender;
-		internal short height;
+		public ushort units_per_EM;
+		public short ascender;
+		public short descender;
+		public short height;
 
-		internal short max_advance_width;
-		internal short max_advance_height;
+		public short max_advance_width;
+		public short max_advance_height;
 
-		internal short underline_position;
-		internal short underline_thickness;
+		public short underline_position;
+		public short underline_thickness;
 
-		internal IntPtr glyph;
-		internal IntPtr size;
-		internal IntPtr charmap;
+		public IntPtr glyph;
+		public IntPtr size;
+		public IntPtr charmap;
 
-		private IntPtr driver;
-		private IntPtr memory;
-		private IntPtr stream;
+		public IntPtr driver;
+		public IntPtr memory;
+		public IntPtr stream;
 
-		private IntPtr sizes_list;
-		private GenericRec autohint;
-		private IntPtr extensions;
+		public IntPtr sizes_list;
+		public GenericRec autohint;
+		public IntPtr extensions;
 
-		private IntPtr @internal;
+		public IntPtr @public;
 
-		internal static int SizeInBytes { get { return Marshal.SizeOf(typeof(FaceRec)); } }
+		public static int SizeInBytes { get { return Marshal.SizeOf(typeof(FaceRec)); } }
+
+		/*public static FaceRec ReadUsingBinaryReader(byte[] data)
+		{
+			FaceRec rec = new FaceRec();
+			using (BinaryReader reader = new BinaryReader(new MemoryStream(data, false)))
+			{
+				rec.num_faces = new IntPtr(reader.ReadUInt32());
+				rec.face_index = new IntPtr(reader.ReadUInt32());
+				rec.face_flags = new IntPtr(reader.ReadUInt32());
+				rec.style_flags = new IntPtr(reader.ReadUInt32());
+				rec.num_glyphs = new IntPtr(reader.ReadUInt32());
+				rec.family_name = new IntPtr(reader.ReadUInt32());
+				rec.style_name = new IntPtr(reader.ReadUInt32());
+				rec.num_fixed_sizes = reader.ReadInt32();
+				rec.available_sizes = new IntPtr(reader.ReadUInt32());
+				rec.num_charmaps = reader.ReadInt32();
+				rec.charmaps = new IntPtr(reader.ReadUInt32());
+				rec.generic = GenericRec.ReadUsingBinaryReader(reader);
+				rec.bbox = BBox.ReadUsingBinaryReader(reader);
+				rec.units_per_EM = reader.ReadUInt16();
+				rec.ascender = reader.ReadInt16();
+				rec.descender = reader.ReadInt16();
+				rec.height = reader.ReadInt16();
+				rec.max_advance_width = reader.ReadInt16();
+				rec.max_advance_height = reader.ReadInt16();
+				rec.underline_position = reader.ReadInt16();
+				rec.underline_thickness = reader.ReadInt16();
+				rec.glyph = new IntPtr(reader.ReadUInt32());
+				rec.size = new IntPtr(reader.ReadUInt32());
+				rec.charmap = new IntPtr(reader.ReadUInt32());
+				rec.driver = new IntPtr(reader.ReadUInt32());
+				rec.memory = new IntPtr(reader.ReadUInt32());
+				rec.stream = new IntPtr(reader.ReadUInt32());
+				rec.sizes_list = new IntPtr(reader.ReadUInt32());
+				rec.autohint = GenericRec.ReadUsingBinaryReader(reader);
+				rec.extensions = new IntPtr(reader.ReadUInt32());
+				rec.@public = new IntPtr(reader.ReadUInt32());   
+				
+				Type classType = typeof(FaceRec);
+				foreach (FieldInfo field in classType.GetFields(BindingFlags.Public | BindingFlags.Instance))
+				{
+					if (field.FieldType == typeof(IntPtr))
+					{
+						field.SetValue(rec, reader.ReadUInt32());
+					}
+					else if (field.FieldType == typeof(int))
+					{
+						field.SetValue(rec, reader.ReadInt32());
+					}
+					else if (field.FieldType == typeof(ushort))
+					{
+						field.SetValue(rec, reader.ReadUInt16());
+					}
+					else if (field.FieldType == typeof(short))
+					{
+						field.SetValue(rec, reader.ReadInt16());
+					}
+					else if (field.FieldType == typeof(BBox))
+					{
+						field.SetValue(rec, BBox.ReadUsingBinaryReader(reader));
+					}
+					else if (field.FieldType == typeof(GenericRec))
+					{
+						field.SetValue(rec, GenericRec.ReadUsingBinaryReader(reader));
+					}
+				}
+			}
+			return rec;
+		}*/
 	}
 }

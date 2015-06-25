@@ -28,13 +28,13 @@ using System.Runtime.InteropServices;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal class MemoryRec
+	public class MemoryRec
 	{
-		internal IntPtr user;
-		internal AllocFunc alloc;
-		internal FreeFunc free;
-		internal ReallocFunc realloc;
+		public IntPtr user;
+		public AllocFunc alloc;
+		public FreeFunc free;
+		public ReallocFunc realloc;
 
-		internal static int SizeInBytes { get { return Marshal.SizeOf(typeof(MemoryRec)); } }
+		public static int SizeInBytes { get { return Marshal.SizeOf(typeof(MemoryRec)); } }
 	}
 }

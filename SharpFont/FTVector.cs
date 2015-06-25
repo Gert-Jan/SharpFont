@@ -37,8 +37,8 @@ namespace SharpFont
 	{
 		#region Fields
 
-		private IntPtr x;
-		private IntPtr y;
+		public IntPtr x;
+		public IntPtr y;
 
 		#endregion
 

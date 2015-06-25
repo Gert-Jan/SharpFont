@@ -27,6 +27,7 @@ using System.Runtime.InteropServices;
 
 using FT_Long = System.IntPtr;
 using FT_ULong = System.UIntPtr;
+using System.IO;
 
 namespace SharpFont
 {
@@ -186,5 +187,15 @@ namespace SharpFont
 		}
 
 		#endregion
+
+		public static BBox ReadUsingBinaryReader(BinaryReader reader)
+		{
+			BBox box = new BBox();
+			box.xMax = new IntPtr(reader.ReadInt64());
+			box.xMin = new IntPtr(reader.ReadInt64());
+			box.yMax = new IntPtr(reader.ReadInt64());
+			box.yMin = new IntPtr(reader.ReadInt64());
+			return box;
+		}
 	}
 }

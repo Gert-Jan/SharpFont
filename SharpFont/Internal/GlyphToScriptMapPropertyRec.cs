@@ -28,9 +28,9 @@ using System.Runtime.InteropServices;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal struct GlyphToScriptMapPropertyRec
+	public struct GlyphToScriptMapPropertyRec
 	{
-		internal IntPtr face;
-		internal IntPtr map;
+		public IntPtr face;
+		public IntPtr map;
 	}
 }

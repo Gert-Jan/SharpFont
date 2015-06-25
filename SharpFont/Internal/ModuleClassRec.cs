@@ -31,20 +31,20 @@ using FT_ULong = System.UIntPtr;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal struct ModuleClassRec
+	public struct ModuleClassRec
 	{
-		internal uint module_flags;
-		internal FT_Long module_size;
+		public uint module_flags;
+		public FT_Long module_size;
 
 		[MarshalAs(UnmanagedType.LPStr)]
-		internal string module_name;
-		internal FT_Long module_version;
-		internal FT_Long module_requires;
+		public string module_name;
+		public FT_Long module_version;
+		public FT_Long module_requires;
 
-		internal IntPtr module_interface;
+		public IntPtr module_interface;
 
-		internal ModuleConstructor module_init;
-		internal ModuleDestructor module_done;
-		internal ModuleRequester get_interface;
+		public ModuleConstructor module_init;
+		public ModuleDestructor module_done;
+		public ModuleRequester get_interface;
 	}
 }

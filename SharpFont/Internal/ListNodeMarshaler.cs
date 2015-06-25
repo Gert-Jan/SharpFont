@@ -27,7 +27,7 @@ using System.Runtime.InteropServices;
 
 namespace SharpFont.Internal
 {
-	internal sealed class ListNodeMarshaler : ICustomMarshaler
+	public sealed class ListNodeMarshaler : ICustomMarshaler
 	{
 		private static readonly ListNodeMarshaler Instance = new ListNodeMarshaler();
 

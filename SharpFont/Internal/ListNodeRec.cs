@@ -28,12 +28,12 @@ using System.Runtime.InteropServices;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal class ListNodeRec
+	public class ListNodeRec
 	{
-		internal IntPtr prev;
-		internal IntPtr next;
-		internal IntPtr data;
+		public IntPtr prev;
+		public IntPtr next;
+		public IntPtr data;
 
-		internal static int SizeInBytes { get { return Marshal.SizeOf(typeof(ListNodeRec)); } }
+		public static int SizeInBytes { get { return Marshal.SizeOf(typeof(ListNodeRec)); } }
 	}
 }

@@ -73,6 +73,7 @@ namespace SharpFont
 			: this(false)
 		{
 			IntPtr libraryRef;
+			Console.WriteLine("Library before load freetype dll");
 			Error err = FT.FT_Init_FreeType(out libraryRef);
 
 			if (err != Error.Ok)

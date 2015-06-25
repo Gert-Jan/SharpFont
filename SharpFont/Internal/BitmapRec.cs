@@ -34,15 +34,15 @@ namespace SharpFont.Internal
 	/// Refer to <see cref="FTBitmap"/> for FreeType documentation.
 	/// </remarks>
 	[StructLayout(LayoutKind.Sequential)]
-	internal struct BitmapRec
+	public struct BitmapRec
 	{
-		internal int rows;
-		internal int width;
-		internal int pitch;
-		internal IntPtr buffer;
-		internal short num_grays;
-		internal PixelMode pixel_mode;
-		internal byte palette_mode;
-		internal IntPtr palette;
+		public int rows;
+		public int width;
+		public int pitch;
+		public IntPtr buffer;
+		public short num_grays;
+		public PixelMode pixel_mode;
+		public byte palette_mode;
+		public IntPtr palette;
 	}
 }

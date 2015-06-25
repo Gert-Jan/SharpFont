@@ -28,12 +28,12 @@ using System.Runtime.InteropServices;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal struct SpanRec
+	public struct SpanRec
 	{
-		internal short x;
-		internal ushort len;
-		internal byte coverage;
+		public short x;
+		public ushort len;
+		public byte coverage;
 
-		internal static int SizeInBytes { get { return Marshal.SizeOf(typeof(SpanRec)); } }
+		public static int SizeInBytes { get { return Marshal.SizeOf(typeof(SpanRec)); } }
 	}
 }

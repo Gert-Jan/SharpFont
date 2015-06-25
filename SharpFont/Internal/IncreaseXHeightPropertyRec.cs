@@ -28,9 +28,9 @@ using System.Runtime.InteropServices;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal struct IncreaseXHeightPropertyRec
+	public struct IncreaseXHeightPropertyRec
 	{
-		internal IntPtr face;
-		internal uint limit;
+		public IntPtr face;
+		public uint limit;
 	}
 }

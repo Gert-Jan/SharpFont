@@ -31,13 +31,13 @@ using FT_ULong = System.UIntPtr;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal struct OutlineFuncsRec
+	public struct OutlineFuncsRec
 	{
-		internal IntPtr moveTo;
-		internal IntPtr lineTo;
-		internal IntPtr conicTo;
-		internal IntPtr cubicTo;
-		internal int shift;
-		internal FT_Long delta;
+		public IntPtr moveTo;
+		public IntPtr lineTo;
+		public IntPtr conicTo;
+		public IntPtr cubicTo;
+		public int shift;
+		public FT_Long delta;
 	}
 }

@@ -31,21 +31,21 @@ using FT_ULong = System.UIntPtr;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal class StreamRec
+	public class StreamRec
 	{
-		internal IntPtr @base;
-		internal FT_ULong size;
-		internal FT_ULong pos;
+		public IntPtr @base;
+		public FT_ULong size;
+		public FT_ULong pos;
 
-		internal StreamDescRec descriptor;
-		internal StreamDescRec pathname;
-		internal StreamIOFunc read;
-		internal StreamCloseFunc close;
+		public StreamDescRec descriptor;
+		public StreamDescRec pathname;
+		public StreamIOFunc read;
+		public StreamCloseFunc close;
 
-		internal IntPtr memory;
-		internal IntPtr cursor;
-		internal IntPtr limit;
+		public IntPtr memory;
+		public IntPtr cursor;
+		public IntPtr limit;
 
-		internal static int SizeInBytes { get { return Marshal.SizeOf(typeof(StreamRec)); } }
+		public static int SizeInBytes { get { return Marshal.SizeOf(typeof(StreamRec)); } }
 	}
 }

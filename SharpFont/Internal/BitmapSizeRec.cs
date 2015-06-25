@@ -37,16 +37,16 @@ namespace SharpFont.Internal
 	/// Refer to <see cref="BitmapSize"/> for FreeType documentation.
 	/// </remarks>
 	[StructLayout(LayoutKind.Sequential)]
-	internal class BitmapSizeRec
+	public class BitmapSizeRec
 	{
-		internal short height;
-		internal short width;
+		public short height;
+		public short width;
 
-		internal FT_Long size;
+		public FT_Long size;
 
-		internal FT_Long x_ppem;
-		internal FT_Long y_ppem;
+		public FT_Long x_ppem;
+		public FT_Long y_ppem;
 
-		internal static int SizeInBytes { get { return Marshal.SizeOf(typeof(BitmapSizeRec)); } }
+		public static int SizeInBytes { get { return Marshal.SizeOf(typeof(BitmapSizeRec)); } }
 	}
 }
