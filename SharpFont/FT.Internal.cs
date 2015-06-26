@@ -40,8 +40,10 @@ namespace SharpFont
 		/// <summary>
 		/// Defines the location of the FreeType DLL. Update SharpFont.dll.config if you change this!
 		/// </summary>
-#if UNITY
-		private const string FreetypeDll = "C:\\Development\\SpeedrunnersUnity\\Assets\\Dlls\\freetype6.dll"; //"Data\\Plugins\\freetype.dll";
+#if UNITY && XB1
+		private const string FreetypeDll = "Data/Plugins/freetype.xb1.dll";
+#elif UNITY
+		private const string FreetypeDll = "Assets/Dlls/freetype.win.dll";
 #else
 		private const string FreetypeDll = "freetype6.dll";
 #endif
