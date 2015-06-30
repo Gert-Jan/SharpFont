@@ -371,7 +371,13 @@ namespace SharpFont
 			set
 			{
 				reference = value;
-				rec = PInvokeHelper.PtrToStructure<GlyphSlotRec>(reference);
+#if AOT
+				//GlyphSlotRec rec2 = PInvokeHelper.PtrToStructure<GlyphSlotRec>(reference);	 //TODO: Remove this to #else
+				//rec = RecReader.ReadUsingReference<GlyphSlotRec>(reference, rec2);
+				rec = RecReader.ReadUsingReference<GlyphSlotRec>(reference, new GlyphSlotRec(), false);
+				rec.bitmap.rows = 11; // TODO! The value of rows is really big for some reason. This is a dirty hack to not allocate 18gb of memory in CFont.LoadGlyphBitmap
+#else
+#endif
 			}
 		}
 

@@ -202,7 +202,11 @@ namespace SharpFont
 			set
 			{
 				reference = value;
+#if AOT
+				rec = RecReader.ReadUsingReference<StreamRec>(reference, null);
+#else
 				rec = PInvokeHelper.PtrToStructure<StreamRec>(reference);
+#endif
 			}
 		}
 

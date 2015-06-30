@@ -37,7 +37,7 @@ namespace SharpFont.Internal
 	/// Refer to <see cref="SizeRequest"/> for FreeType documentation.
 	/// </remarks>
 	[StructLayout(LayoutKind.Sequential)]
-	public struct SizeRequestRec
+	public class SizeRequestRec
 	{
 		public SizeRequestType type;
 		public FT_Long width;

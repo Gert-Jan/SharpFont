@@ -277,7 +277,11 @@ namespace SharpFont
 					throw new ObjectDisposedException("FTBitmap", "Cannot access a disposed object.");
 
 				reference = value;
+#if AOT
+				rec = RecReader.ReadUsingReference<BitmapRec>(reference, new BitmapRec(), false);
+#else
 				rec = PInvokeHelper.PtrToStructure<BitmapRec>(reference);
+#endif
 			}
 		}
 

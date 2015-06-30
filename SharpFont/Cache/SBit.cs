@@ -26,6 +26,7 @@ using System;
 using System.Runtime.InteropServices;
 
 using SharpFont.Cache.Internal;
+using SharpFont.Internal;
 
 namespace SharpFont.Cache
 {
@@ -176,7 +177,13 @@ namespace SharpFont.Cache
 			set
 			{
 				reference = value;
+#if AOT
+				//SBitRec rec2 = PInvokeHelper.PtrToStructure<SBitRec>(reference);
+				//rec = RecReader.ReadUsingReference<SBitRec>(reference, rec2);
+				rec = RecReader.ReadUsingReference<SBitRec>(reference, new SBitRec(), false);
+#else
 				rec = PInvokeHelper.PtrToStructure<SBitRec>(reference);
+#endif
 			}
 		}
 

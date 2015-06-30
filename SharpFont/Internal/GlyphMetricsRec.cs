@@ -37,7 +37,7 @@ namespace SharpFont.Internal
 	/// Refer to <see cref="GlyphMetrics"/> for FreeType documentation.
 	/// </remarks>
 	[StructLayout(LayoutKind.Sequential)]
-	public struct GlyphMetricsRec
+	public class GlyphMetricsRec
 	{
 		public FT_Long width;
 		public FT_Long height;

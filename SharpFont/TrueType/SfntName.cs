@@ -26,6 +26,7 @@ using System;
 using System.Runtime.InteropServices;
 
 using SharpFont.TrueType.Internal;
+using SharpFont.Internal;
 
 namespace SharpFont.TrueType
 {
@@ -135,7 +136,11 @@ namespace SharpFont.TrueType
 			set
 			{
 				reference = value;
+#if AOT
+				rec = RecReader.ReadUsingReference<SfntNameRec>(reference, null);
+#else
 				rec = PInvokeHelper.PtrToStructure<SfntNameRec>(reference);
+#endif
 			}
 		}
 

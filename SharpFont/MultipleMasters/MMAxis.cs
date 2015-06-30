@@ -26,6 +26,7 @@ using System;
 using System.Runtime.InteropServices;
 
 using SharpFont.MultipleMasters.Internal;
+using SharpFont.Internal;
 
 namespace SharpFont.MultipleMasters
 {
@@ -102,7 +103,11 @@ namespace SharpFont.MultipleMasters
 			set
 			{
 				reference = value;
+#if AOT
+				rec = RecReader.ReadUsingReference<MMAxisRec>(reference, null);
+#else
 				rec = PInvokeHelper.PtrToStructure<MMAxisRec>(reference);
+#endif
 			}
 		}
 

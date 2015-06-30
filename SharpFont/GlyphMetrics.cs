@@ -171,7 +171,11 @@ namespace SharpFont
 			set
 			{
 				reference = value;
+#if AOT
+				rec = RecReader.ReadUsingReference<GlyphMetricsRec>(reference, null);
+#else
 				rec = PInvokeHelper.PtrToStructure<GlyphMetricsRec>(reference);
+#endif
 			}
 		}
 

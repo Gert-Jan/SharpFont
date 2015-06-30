@@ -40,8 +40,8 @@ namespace SharpFont
 	{
 		#region Fields
 
-		private FT_Long xMin, yMin;
-		private FT_Long xMax, yMax;
+		public FT_Long xMin, yMin;
+		public FT_Long xMax, yMax;
 
 		#endregion
 
@@ -60,6 +60,14 @@ namespace SharpFont
 			yMin = (IntPtr)bottom;
 			xMax = (IntPtr)right;
 			yMax = (IntPtr)top;
+		}
+
+		internal BBox(BinaryReader reader)
+		{
+			xMin = new IntPtr(reader.ReadInt64());
+			yMin = new IntPtr(reader.ReadInt64());
+			xMax = new IntPtr(reader.ReadInt64());
+			yMax = new IntPtr(reader.ReadInt64());
 		}
 
 		#endregion
@@ -187,15 +195,5 @@ namespace SharpFont
 		}
 
 		#endregion
-
-		public static BBox ReadUsingBinaryReader(BinaryReader reader)
-		{
-			BBox box = new BBox();
-			box.xMax = new IntPtr(reader.ReadInt64());
-			box.xMin = new IntPtr(reader.ReadInt64());
-			box.yMax = new IntPtr(reader.ReadInt64());
-			box.yMin = new IntPtr(reader.ReadInt64());
-			return box;
-		}
 	}
 }

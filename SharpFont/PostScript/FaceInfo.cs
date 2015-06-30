@@ -26,6 +26,7 @@ using System;
 using System.Runtime.InteropServices;
 
 using SharpFont.PostScript.Internal;
+using SharpFont.Internal;
 
 namespace SharpFont.PostScript
 {
@@ -203,7 +204,11 @@ namespace SharpFont.PostScript
 			set
 			{
 				reference = value;
+#if AOT
+				rec = RecReader.ReadUsingReference<FaceInfoRec>(reference, null);
+#else
 				rec = PInvokeHelper.PtrToStructure<FaceInfoRec>(reference);
+#endif
 			}
 		}
 

@@ -31,7 +31,7 @@ using FT_ULong = System.UIntPtr;
 namespace SharpFont.PostScript.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal struct FontInfoRec
+	internal class FontInfoRec
 	{
 		[MarshalAs(UnmanagedType.LPStr)]
 		internal string version;

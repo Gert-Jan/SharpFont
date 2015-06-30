@@ -26,6 +26,7 @@ using System;
 using System.Runtime.InteropServices;
 
 using SharpFont.Internal;
+using System.IO;
 
 namespace SharpFont
 {
@@ -62,6 +63,15 @@ namespace SharpFont
 			this.x = Marshal.ReadIntPtr(reference);
 			this.y = Marshal.ReadIntPtr(reference, IntPtr.Size);
 		}
+
+		internal FTVector(BinaryReader reader)
+			: this()
+		{
+			this.x = new IntPtr(reader.ReadInt64());
+			this.y = new IntPtr(reader.ReadInt64());
+			UnityEngine.Debug.Log("RecReader read field     x     type ?     value " + this.x);
+			UnityEngine.Debug.Log("RecReader read field     y     type ?     value " + this.y);
+		} 
 
 		#endregion
 

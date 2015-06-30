@@ -31,7 +31,7 @@ using FT_ULong = System.UIntPtr;
 namespace SharpFont.PostScript.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal struct PrivateRec
+	internal class PrivateRec
 	{
 		internal int unique_id;
 		internal int lenIV;

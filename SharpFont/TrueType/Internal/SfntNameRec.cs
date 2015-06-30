@@ -28,7 +28,7 @@ using System.Runtime.InteropServices;
 namespace SharpFont.TrueType.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal struct SfntNameRec
+	internal class SfntNameRec
 	{
 		internal PlatformId platform_id;
 		internal ushort encoding_id;

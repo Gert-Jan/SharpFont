@@ -152,7 +152,12 @@ namespace SharpFont
 				if (IsDisposed)
 					throw new ObjectDisposedException("Reference", "Cannot modify a disposed object.");
 
+#if AOT
+				//BitmapGlyphRec rec2 = PInvokeHelper.PtrToStructure<BitmapGlyphRec>(original.Reference);
+				rec = RecReader.ReadUsingReference<BitmapGlyphRec>(original.Reference, null, false);
+#else
 				rec = PInvokeHelper.PtrToStructure<BitmapGlyphRec>(original.Reference);
+#endif
 			}
 		}
 

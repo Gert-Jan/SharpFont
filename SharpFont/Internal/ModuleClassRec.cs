@@ -31,7 +31,7 @@ using FT_ULong = System.UIntPtr;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	public struct ModuleClassRec
+	public class ModuleClassRec
 	{
 		public uint module_flags;
 		public FT_Long module_size;

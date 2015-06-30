@@ -85,77 +85,8 @@ namespace SharpFont.Internal
 		public GenericRec autohint;
 		public IntPtr extensions;
 
-		public IntPtr @public;
+		public IntPtr @internal;
 
 		public static int SizeInBytes { get { return Marshal.SizeOf(typeof(FaceRec)); } }
-
-		/*public static FaceRec ReadUsingBinaryReader(byte[] data)
-		{
-			FaceRec rec = new FaceRec();
-			using (BinaryReader reader = new BinaryReader(new MemoryStream(data, false)))
-			{
-				rec.num_faces = new IntPtr(reader.ReadUInt32());
-				rec.face_index = new IntPtr(reader.ReadUInt32());
-				rec.face_flags = new IntPtr(reader.ReadUInt32());
-				rec.style_flags = new IntPtr(reader.ReadUInt32());
-				rec.num_glyphs = new IntPtr(reader.ReadUInt32());
-				rec.family_name = new IntPtr(reader.ReadUInt32());
-				rec.style_name = new IntPtr(reader.ReadUInt32());
-				rec.num_fixed_sizes = reader.ReadInt32();
-				rec.available_sizes = new IntPtr(reader.ReadUInt32());
-				rec.num_charmaps = reader.ReadInt32();
-				rec.charmaps = new IntPtr(reader.ReadUInt32());
-				rec.generic = GenericRec.ReadUsingBinaryReader(reader);
-				rec.bbox = BBox.ReadUsingBinaryReader(reader);
-				rec.units_per_EM = reader.ReadUInt16();
-				rec.ascender = reader.ReadInt16();
-				rec.descender = reader.ReadInt16();
-				rec.height = reader.ReadInt16();
-				rec.max_advance_width = reader.ReadInt16();
-				rec.max_advance_height = reader.ReadInt16();
-				rec.underline_position = reader.ReadInt16();
-				rec.underline_thickness = reader.ReadInt16();
-				rec.glyph = new IntPtr(reader.ReadUInt32());
-				rec.size = new IntPtr(reader.ReadUInt32());
-				rec.charmap = new IntPtr(reader.ReadUInt32());
-				rec.driver = new IntPtr(reader.ReadUInt32());
-				rec.memory = new IntPtr(reader.ReadUInt32());
-				rec.stream = new IntPtr(reader.ReadUInt32());
-				rec.sizes_list = new IntPtr(reader.ReadUInt32());
-				rec.autohint = GenericRec.ReadUsingBinaryReader(reader);
-				rec.extensions = new IntPtr(reader.ReadUInt32());
-				rec.@public = new IntPtr(reader.ReadUInt32());   
-				
-				Type classType = typeof(FaceRec);
-				foreach (FieldInfo field in classType.GetFields(BindingFlags.Public | BindingFlags.Instance))
-				{
-					if (field.FieldType == typeof(IntPtr))
-					{
-						field.SetValue(rec, reader.ReadUInt32());
-					}
-					else if (field.FieldType == typeof(int))
-					{
-						field.SetValue(rec, reader.ReadInt32());
-					}
-					else if (field.FieldType == typeof(ushort))
-					{
-						field.SetValue(rec, reader.ReadUInt16());
-					}
-					else if (field.FieldType == typeof(short))
-					{
-						field.SetValue(rec, reader.ReadInt16());
-					}
-					else if (field.FieldType == typeof(BBox))
-					{
-						field.SetValue(rec, BBox.ReadUsingBinaryReader(reader));
-					}
-					else if (field.FieldType == typeof(GenericRec))
-					{
-						field.SetValue(rec, GenericRec.ReadUsingBinaryReader(reader));
-					}
-				}
-			}
-			return rec;
-		}*/
 	}
 }

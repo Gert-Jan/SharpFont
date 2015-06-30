@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.IO;
 
 namespace SharpFont
 {
@@ -13,8 +14,8 @@ namespace SharpFont
 	{
 		#region Fields
 
-		private IntPtr x;
-		private IntPtr y;
+		public IntPtr x;
+		public IntPtr y;
 
 		#endregion
 
@@ -37,6 +38,25 @@ namespace SharpFont
 		{
 			this.x = Marshal.ReadIntPtr(reference);
 			this.y = Marshal.ReadIntPtr(reference, IntPtr.Size);
+		}
+
+		internal FTVector26Dot6(BinaryReader reader, FTVector26Dot6 obj) 
+			: this()
+		{
+			this.x = new IntPtr(reader.ReadInt64());
+			this.y = new IntPtr(reader.ReadInt64());
+
+			UnityEngine.Debug.Log("Read x with type IntPtr from BYTES: " + this.x + " vs. " + obj.x);
+			if (this.x.ToString() != obj.x.ToString())
+			{
+				//UnityEngine.Debug.LogError("VALUES differ in FTVector26Dot6:x");
+			}
+
+			UnityEngine.Debug.Log("Read y with type IntPtr from BYTES: " + this.y + " vs. " + obj.y);
+			if (this.y.ToString() != obj.y.ToString())
+			{
+				//UnityEngine.Debug.LogError("VALUES differ in FTVector26Dot6:y");
+			}
 		}
 
 		#endregion

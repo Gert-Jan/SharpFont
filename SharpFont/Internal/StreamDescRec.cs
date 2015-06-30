@@ -31,7 +31,7 @@ using FT_ULong = System.UIntPtr;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Explicit)]
-	public struct StreamDescRec
+	public class StreamDescRec
 	{
 		[FieldOffset(0)]
 		public FT_Long value;

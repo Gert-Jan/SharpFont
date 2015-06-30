@@ -543,7 +543,7 @@ namespace SharpFont
 
 			if (err != Error.Ok)
 				throw new FreeTypeException(err);
-
+			
 			value = PInvokeHelper.PtrToStructure<T>(ptr);
 		}
 
@@ -564,7 +564,12 @@ namespace SharpFont
 			IntPtr ptr;
 			Error err = FT.FT_Property_Get(Reference, moduleName, propertyName, out ptr);
 
+#if AOT
+			GlyphToScriptMapPropertyRec ptrRec = RecReader.ReadUsingReference<GlyphToScriptMapPropertyRec>(ptr, new GlyphToScriptMapPropertyRec(), false);
+#else
 			GlyphToScriptMapPropertyRec ptrRec = PInvokeHelper.PtrToStructure<GlyphToScriptMapPropertyRec>(ptr);
+#endif
+
 			Face face = childFaces.Find(f => f.Reference == ptrRec.face);
 			value = new GlyphToScriptMapProperty(ptrRec, face);
 		}
@@ -586,7 +591,12 @@ namespace SharpFont
 			IntPtr ptr;
 			Error err = FT.FT_Property_Get(Reference, moduleName, propertyName, out ptr);
 
+#if AOT
+			IncreaseXHeightPropertyRec ptrRec = RecReader.ReadUsingReference<IncreaseXHeightPropertyRec>(ptr, new IncreaseXHeightPropertyRec(), false);
+#else
 			IncreaseXHeightPropertyRec ptrRec = PInvokeHelper.PtrToStructure<IncreaseXHeightPropertyRec>(ptr);
+#endif
+
 			Face face = childFaces.Find(f => f.Reference == ptrRec.face);
 			value = new IncreaseXHeightProperty(ptrRec, face);
 		}

@@ -31,7 +31,7 @@ using FT_ULong = System.UIntPtr;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	public struct OutlineFuncsRec
+	public class OutlineFuncsRec
 	{
 		public IntPtr moveTo;
 		public IntPtr lineTo;

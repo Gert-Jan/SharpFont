@@ -81,7 +81,11 @@ namespace SharpFont
 
 		internal Generic(IntPtr reference)
 		{
+#if AOT
+			rec = RecReader.ReadUsingReference<GenericRec>(reference, null);
+#else
 			rec = PInvokeHelper.PtrToStructure<GenericRec>(reference);
+#endif
 		}
 
 		internal Generic(IntPtr reference, int offset)

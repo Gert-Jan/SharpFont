@@ -27,20 +27,37 @@ using System.Runtime.InteropServices;
 
 using FT_Long = System.IntPtr;
 using FT_ULong = System.UIntPtr;
+using System.IO;
 
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
 	public struct SizeMetricsRec
 	{
+		public IntPtr x_scale;
+		public IntPtr y_scale;
+		public IntPtr ascender;
+		public IntPtr descender;
+		public IntPtr height;
+		public IntPtr max_advance;
+		
 		public ushort x_ppem;
 		public ushort y_ppem;
 
-		public FT_Long x_scale;
-		public FT_Long y_scale;
-		public FT_Long ascender;
-		public FT_Long descender;
-		public FT_Long height;
-		public FT_Long max_advance;
+		public static SizeMetricsRec ReadUsingBinaryReader(BinaryReader reader)
+		{
+			SizeMetricsRec rec = new SizeMetricsRec();
+			
+			rec.x_scale = new IntPtr(reader.ReadInt64());
+			UnityEngine.Debug.LogError("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! just a test: " + rec.x_scale + "       !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			rec.y_scale = new IntPtr(reader.ReadInt64());
+			rec.ascender = new IntPtr(reader.ReadInt64());
+			rec.descender = new IntPtr(reader.ReadInt64());
+			rec.height = new IntPtr(reader.ReadInt64());
+			rec.max_advance = new IntPtr(reader.ReadInt64());
+			rec.x_ppem = reader.ReadUInt16();
+			rec.y_ppem = reader.ReadUInt16();
+			return rec;
+		}
 	}
 }

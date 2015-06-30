@@ -28,7 +28,7 @@ using System.Runtime.InteropServices;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	public struct OutlineRec
+	public class OutlineRec
 	{
 		public short n_contours;
 		public short n_points;

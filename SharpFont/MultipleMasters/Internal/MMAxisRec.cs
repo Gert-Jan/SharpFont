@@ -31,7 +31,7 @@ using FT_ULong = System.UIntPtr;
 namespace SharpFont.MultipleMasters.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	internal struct MMAxisRec
+	internal class MMAxisRec
 	{
 		[MarshalAs(UnmanagedType.LPStr)]
 		internal string name;

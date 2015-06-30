@@ -26,6 +26,7 @@ using System;
 using System.Runtime.InteropServices;
 
 using SharpFont.Cache.Internal;
+using SharpFont.Internal;
 
 namespace SharpFont.Cache
 {
@@ -107,7 +108,13 @@ namespace SharpFont.Cache
 			set
 			{
 				reference = value;
+#if AOT
+				//ImageTypeRec rec2 = PInvokeHelper.PtrToStructure<ImageTypeRec>(reference);
+				//rec = RecReader.ReadUsingReference<ImageTypeRec>(reference, rec2);
+				rec = RecReader.ReadUsingReference<ImageTypeRec>(reference, new ImageTypeRec(), false);
+#else
 				rec = PInvokeHelper.PtrToStructure<ImageTypeRec>(reference);
+#endif
 			}
 		}
 

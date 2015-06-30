@@ -29,7 +29,7 @@ using System.IO;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	public struct GenericRec
+	public class GenericRec
 	{
 		public IntPtr data;
 		public IntPtr finalizer;

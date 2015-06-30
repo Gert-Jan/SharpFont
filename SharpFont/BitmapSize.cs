@@ -136,7 +136,13 @@ namespace SharpFont
 			set
 			{
 				reference = value;
+#if AOT
+				//BitmapSizeRec rec2 = PInvokeHelper.PtrToStructure<BitmapSizeRec>(reference);
+				//rec = RecReader.ReadUsingReference<BitmapSizeRec>(reference, rec2);
+				rec = RecReader.ReadUsingReference<BitmapSizeRec>(reference, new BitmapSizeRec(), false);
+#else
 				rec = PInvokeHelper.PtrToStructure<BitmapSizeRec>(reference);
+#endif
 			}
 		}
 

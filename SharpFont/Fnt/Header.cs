@@ -26,6 +26,7 @@ using System;
 using System.Runtime.InteropServices;
 
 using SharpFont.Fnt.Internal;
+using SharpFont.Internal;
 
 namespace SharpFont.Fnt
 {
@@ -375,7 +376,11 @@ namespace SharpFont.Fnt
 			set
 			{
 				reference = value;
+#if AOT
+				rec = RecReader.ReadUsingReference<HeaderRec>(reference, null);
+#else
 				rec = PInvokeHelper.PtrToStructure<HeaderRec>(reference);
+#endif
 			}
 		}
 

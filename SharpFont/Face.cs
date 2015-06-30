@@ -558,7 +558,7 @@ namespace SharpFont
 				if (disposed)
 					throw new ObjectDisposedException("Glyph", "Cannot access a disposed object.");
 
-				return new GlyphSlot(rec.glyph, this, parentLibrary);
+				return new GlyphSlot(rec.glyph, this, parentLibrary);;
 			}
 		}
 
@@ -749,8 +749,14 @@ namespace SharpFont
 					throw new ObjectDisposedException("Reference", "Cannot access a disposed object.");
 
 				reference = value;
-				//rec = RecReader.ReadUsingReference<FaceRec>(reference);
+#if AOT
+				//FaceRec rec2 = PInvokeHelper.PtrToStructure<FaceRec>(reference);
+				//rec = RecReader.ReadUsingReference<FaceRec>(reference, rec2);
+				rec = RecReader.ReadUsingReference<FaceRec>(reference, new FaceRec(), false);
+#else
 				rec = PInvokeHelper.PtrToStructure<FaceRec>(reference);
+#endif
+				//RecReader.PrintSomething<FaceRec>(rec, rec2);
 			}
 		}
 

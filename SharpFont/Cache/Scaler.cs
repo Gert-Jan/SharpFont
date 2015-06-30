@@ -26,6 +26,7 @@ using System;
 using System.Runtime.InteropServices;
 
 using SharpFont.Cache.Internal;
+using SharpFont.Internal;
 
 namespace SharpFont.Cache
 {
@@ -137,7 +138,13 @@ namespace SharpFont.Cache
 			set
 			{
 				reference = value;
+#if AOT
+				//ScalerRec rec2 = PInvokeHelper.PtrToStructure<ScalerRec>(reference);
+				//rec = RecReader.ReadUsingReference<ScalerRec>(reference, rec2);
+				rec = RecReader.ReadUsingReference<ScalerRec>(reference, new ScalerRec(), false);
+#else
 				rec = PInvokeHelper.PtrToStructure<ScalerRec>(reference);
+#endif
 			}
 		}
 

@@ -28,7 +28,7 @@ using System.Runtime.InteropServices;
 namespace SharpFont.Internal
 {
 	[StructLayout(LayoutKind.Sequential)]
-	public struct SpanRec
+	public class SpanRec
 	{
 		public short x;
 		public ushort len;

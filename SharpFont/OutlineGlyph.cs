@@ -125,7 +125,11 @@ namespace SharpFont
 				if (IsDisposed)
 					throw new ObjectDisposedException("Bitmap", "Cannot access a disposed object.");
 
+#if AOT
+				rec = RecReader.ReadUsingReference<OutlineGlyphRec>(original.Reference, null);
+#else
 				rec = PInvokeHelper.PtrToStructure<OutlineGlyphRec>(original.Reference);
+#endif
 			}
 		}
 

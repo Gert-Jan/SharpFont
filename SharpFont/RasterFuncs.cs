@@ -208,7 +208,11 @@ namespace SharpFont
 			set
 			{
 				reference = value;
+#if AOT
+				rec = RecReader.ReadUsingReference<RasterFuncsRec>(reference, null);
+#else
 				rec = PInvokeHelper.PtrToStructure<RasterFuncsRec>(reference);
+#endif
 			}
 		}
 

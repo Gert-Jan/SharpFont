@@ -26,6 +26,7 @@ using System;
 using System.Runtime.InteropServices;
 
 using SharpFont.Bdf.Internal;
+using SharpFont.Internal;
 
 namespace SharpFont.Bdf
 {
@@ -112,7 +113,13 @@ namespace SharpFont.Bdf
 			set
 			{
 				reference = value;
+#if AOT
+				//PropertyRec rec2 = PInvokeHelper.PtrToStructure<PropertyRec>(reference);
+				//rec = RecReader.ReadUsingReference<PropertyRec>(reference, rec2);
+				rec = RecReader.ReadUsingReference<PropertyRec>(reference, new PropertyRec(), false);
+#else
 				rec = PInvokeHelper.PtrToStructure<PropertyRec>(reference);
+#endif
 			}
 		}
 

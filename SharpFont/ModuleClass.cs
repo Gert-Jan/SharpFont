@@ -184,7 +184,11 @@ namespace SharpFont
 			set
 			{
 				reference = value;
+#if AOT
+				rec = RecReader.ReadUsingReference<ModuleClassRec>(reference, null);
+#else
 				rec = PInvokeHelper.PtrToStructure<ModuleClassRec>(reference);
+#endif
 			}
 		}
 
